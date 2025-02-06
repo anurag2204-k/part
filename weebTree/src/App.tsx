@@ -6,14 +6,12 @@ import Card2 from "./components/Card2";
 
 export default function App() {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("https://randomuser.me/api/?page=1&results=1&seed=dfabc")
       .then((res) => res.json())
       .then((data) => {
         setUser(data.results[0]);
-        setLoading(false);
       })
       .catch((err) => console.error("Error fetching user:", err));
   }, []);
